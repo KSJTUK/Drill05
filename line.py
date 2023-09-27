@@ -52,6 +52,8 @@ def draw_point(p):
 
 def draw_line(p1, p2):
     # fill here
+    draw_big_point(p1)
+    draw_big_point(p2)
     pass
 
 
@@ -59,6 +61,6 @@ prepare_turtle_canvas()
 
 
 # fill here
-
+draw_line((-100, -100), (300, 150))
 
 turtle.done()
