@@ -72,5 +72,7 @@ prepare_turtle_canvas()
 
 # fill here
 draw_line((-100, -100), (300, 150))
+draw_line((-100, -100), (-100, 300))
+
 
 turtle.done()
