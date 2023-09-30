@@ -32,8 +32,10 @@ def is_character_meet_hand():
 
 
 def character_move_to_hand(hand_point):
-    global x, y, speed
+    global x, y, speed, flip
     move_speed = speed / 100
+    if hand_point[0] - x < 0: flip = 'h' 
+    else: flip = 'n'
     x = (1 - move_speed) * x + move_speed * hand_point[0]
     y = (1 - move_speed) * y + move_speed * hand_point[1]
 
@@ -45,6 +47,7 @@ frame = 0
 speed = 3
 hide_cursor()
 hand_point = (0, 0)
+flip = 'n'
 
 while running:
     clear_canvas()
@@ -56,7 +59,7 @@ while running:
 
     TUK_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
     hand.draw(*hand_point)
-    character.clip_draw(frame * 100, 100 * 1, 100, 100, x, y)
+    character.clip_composite_draw(frame * 100, 100 * 1, 100, 100, 0, flip, x, y, 100, 100)
 
     update_canvas()
     frame = (frame + 1) % 8
