@@ -25,20 +25,24 @@ def create_hand_random_point():
     character_meet_hand = False
     return rand_point
 
+def is_character_meet_hand():
+    global x, y, hand_point, character_meet_hand
+    if (round(x) == hand_point[0] and round(y) == hand_point[1]):
+        character_meet_hand = True
+
+
 def character_move_to_hand(hand_point):
     global x, y, speed
     move_speed = speed / 100
     x = (1 - move_speed) * x + move_speed * hand_point[0]
     y = (1 - move_speed) * y + move_speed * hand_point[1]
-    print(x, y)
-    print(*hand_point)
 
 
 character_meet_hand = True
 running = True
 x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 frame = 0
-speed = 5
+speed = 3
 hide_cursor()
 hand_point = (0, 0)
 
@@ -48,6 +52,7 @@ while running:
     if character_meet_hand:
         hand_point = create_hand_random_point()
     character_move_to_hand(hand_point)
+    is_character_meet_hand()
 
     TUK_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
     hand.draw(*hand_point)
@@ -57,6 +62,8 @@ while running:
     frame = (frame + 1) % 8
 
     handle_events()
+
+    delay(0.01)
 
 close_canvas()
 
