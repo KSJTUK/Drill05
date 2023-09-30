@@ -1,8 +1,7 @@
 from pico2d import *
 import random
 
-# test
-TUK_WIDTH, TUK_HEIGHT = 800, 600
+TUK_WIDTH, TUK_HEIGHT = 1280, 1024
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
 
 TUK_ground = load_image('TUK_GROUND.png')
@@ -69,7 +68,3 @@ while running:
     delay(0.01)
 
 close_canvas()
-
-
-
-
