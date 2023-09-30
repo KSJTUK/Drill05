@@ -26,12 +26,19 @@ def create_hand_random_point():
     return rand_point
 
 def character_move_to_hand(hand_point):
-    pass
+    global x, y, speed
+    move_speed = speed / 100
+    x = (1 - move_speed) * x + move_speed * hand_point[0]
+    y = (1 - move_speed) * y + move_speed * hand_point[1]
+    print(x, y)
+    print(*hand_point)
+
 
 character_meet_hand = True
 running = True
 x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 frame = 0
+speed = 5
 hide_cursor()
 hand_point = (0, 0)
 
